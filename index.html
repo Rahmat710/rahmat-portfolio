@@ -131,18 +131,18 @@
     <!-- Contact -->
     <section class="container-fluid bg-info">
       <h2 class="mb-3 text-center">Contact Me</h2>
-      <form class="row justify-content-center g-3">
+      <form class="row justify-content-center g-3" name="rahmat-contact-form">
         <div class="col-md-8 shadow p-2 rounded">
           <label for="nama-pengirim" class="form-label">Nama Anda</label>
-          <input type="text" class="form-control" id="nama-pengirim" placeholder="Nama Anda">
+          <input type="text" class="form-control" id="nama-pengirim" placeholder="Nama Anda" name="nama" required>
         </div>
         <div class="col-md-8 shadow p-2 rounded">
-          <label for="email-pengirim" class="form-label">Alamat Email</label>
-          <input type="email" class="form-control" id="email-pengirim" placeholder="name@example.com">
+          <label for="email-pengirim" class="form-label">Email</label>
+          <input type="email" class="form-control" id="email-pengirim" placeholder="name@example.com" name="email" required>
         </div>
         <div class="col-md-8 shadow p-3 rounded">
           <label for="pesan-pengirim" class="form-label">Pesan</label>
-          <textarea class="form-control" id="pesan-pengirim" placeholder="Isi Pesan" rows="5"></textarea>
+          <textarea class="form-control" id="pesan-pengirim" placeholder="Isi Pesan" rows="5" name="pesan" required></textarea>
         </div>
         <div class="col-md-8">
           <button type="submit" class="btn btn-light mb-3">Kirim</button>
@@ -156,16 +156,28 @@
     <footer class="container-fluid py-2 bg-primary">
       <h3 class="text-center text-light">Rahmat Budianoor</h3>
       <div class="text-center">
-        <a href="https://www.facebook.com/rahmat.budianoor.5" target="_blank"><i class="bi bi-facebook mx-2" style="font-size: 2rem; color: white;"></i></a>
-        <a href="https://www.instagram.com/rahmat710_/" target="_blank"><i class="bi bi-instagram mx-2" style="font-size: 2rem; color: white;"></i></a>
-        <a href="https://https://wa.me/6285787932905" target="_blank"><i class="bi bi-whatsapp mx-2" style="font-size: 2rem; color: white;"></i></a>
-        <a href="https://t.me/Rahmat710" target="_blank"><i class="bi bi-telegram mx-2" style="font-size: 2rem; color: white;"></i></a>
+        <a href="https://www.facebook.com/rahmat.budianoor.5" target="_blank"><i class="bi bi-facebook mx-2 shadow" style="font-size: 2rem; color: white;"></i></a>
+        <a href="https://www.instagram.com/rahmat710_/" target="_blank"><i class="bi bi-instagram mx-2 shadow" style="font-size: 2rem; color: white;"></i></a>
+        <a href="https://https://wa.me/6285787932905" target="_blank"><i class="bi bi-whatsapp mx-2 shadow" style="font-size: 2rem; color: white;"></i></a>
+        <a href="https://t.me/Rahmat710" target="_blank"><i class="bi bi-telegram mx-2 shadow" style="font-size: 2rem; color: white;"></i></a>
       </div>
       <p class="text-center text-light">&copy; 2021 All right reserved</p>
       </footer>
     <!-- Akhir Footer -->
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+    
+    <script>
+      const scriptURL = 'https://script.google.com/macros/s/AKfycbzO4bS4-JGf5QQwNrKr0pYd34S1HsPsSY7Q9jeeIhZ8Qk33z1-GjQZfP-kBhZlDddLr/exec'
+      const form = document.forms['rahmat-contact-form']
+    
+      form.addEventListener('submit', e => {
+        e.preventDefault()
+        fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+          .then(response => console.log('Success!', response))
+          .catch(error => console.error('Error!', error.message))
+      })
+    </script>
   
   </body>
 </html>
